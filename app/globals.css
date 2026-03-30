@@ -2,6 +2,8 @@
 
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark *));
+
 @theme {
   --color-ink: #1A1610;
   --color-cream: #F5F0E8;
@@ -19,8 +21,6 @@ html {
 }
 
 body {
-  background-color: var(--color-cream);
-  color: var(--color-ink);
   font-family: 'DM Sans', sans-serif;
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
@@ -29,6 +29,53 @@ body {
 .ruling-line {
   height: 1px;
   background: linear-gradient(90deg, transparent, #5ab2f1, transparent);
+}
+
+/* Theme overlays for page backgrounds */
+.page-overlay {
+  background: transparent;
+}
+.dark .page-overlay {
+  background: rgba(8, 30, 38, 0.6);
+}
+
+.page-overlay-heavy {
+  background: transparent;
+}
+
+.dark .page-overlay-heavy {
+  background: rgba(8, 30, 38, 0.75);
+}
+
+.page-overlay-about {
+  background: transparent;
+}
+
+.dark .page-overlay-about {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* Theme-aware background images */
+.page-bg-main {
+  background-image: url('https://i.pinimg.com/736x/f5/9d/44/f59d4491b32c9951b8218ee6997c415b.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.dark .page-bg-main {
+  background-image: url('https://i.pinimg.com/736x/eb/fc/e7/ebfce767ffd4dd6eaf55c01507181fce.jpg');
+}
+
+.page-bg-about {
+  background-image: url('https://i.pinimg.com/736x/f5/9d/44/f59d4491b32c9951b8218ee6997c415b.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.dark .page-bg-about {
+  background-image: url('https://i.pinimg.com/736x/ee/f8/1f/eef81fc35eb44f7960349889da32ed37.jpg');
 }
 
 @layer components {
@@ -45,11 +92,29 @@ body {
   }
 
   .nav-link {
-    @apply text-xs tracking-[0.2em] uppercase text-white/60 hover:text-white transition-colors duration-200;
+    @apply text-xs tracking-[0.2em] uppercase transition-colors duration-200;
+    color: rgba(75, 85, 99, 0.8);
+  }
+
+  .dark .nav-link {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .nav-link:hover {
+    color: rgba(17, 24, 39, 1);
+  }
+
+  .dark .nav-link:hover {
+    color: rgba(255, 255, 255, 1);
   }
 
   .nav-link-active {
     @apply text-xs tracking-[0.2em] uppercase pb-0.5;
+    color: rgba(37, 99, 235, 1);
+    border-bottom: 1px solid rgba(37, 99, 235, 1);
+  }
+
+  .dark .nav-link-active {
     color: rgba(58, 152, 246, 0.95);
     border-bottom: 1px solid rgba(58, 152, 246, 0.95);
   }

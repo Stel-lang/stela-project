@@ -41,50 +41,39 @@ export default async function BlogPost({ params }: { params: Promise<{ id: strin
 
   if (!post) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: "rgba(8, 30, 38, 1)" }}>
-        <h1 className="font-display text-4xl text-white italic">Post not found</h1>
+      <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-[rgba(8,30,38,1)]">
+        <h1 className="font-display text-4xl text-gray-900 dark:text-white italic">Post not found</h1>
       </div>
     );
   }
 
   return (
-    <div
-      className="min-h-screen relative"
-      style={{
-        backgroundImage: `url('https://i.pinimg.com/736x/eb/fc/e7/ebfce767ffd4dd6eaf55c01507181fce.jpg')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-      }}
-    >
-      <div
-        className="absolute inset-0 z-0"
-        style={{ background: "rgba(8, 30, 38, 0.75)" }}
-      />
+    <div className="min-h-screen relative page-bg-main">
+      <div className="absolute inset-0 z-0 page-overlay-heavy" />
 
       <div className="relative z-10 max-w-3xl mx-auto px-6 py-16 md:py-24">
         <Link 
           href="/blog" 
-          className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-white/60 hover:text-white transition-colors mb-12"
+          className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-gray-500 dark:text-white/60 hover:text-gray-900 dark:hover:text-white transition-colors mb-12"
         >
           <ArrowLeft size={14} /> Back to Blog
         </Link>
         
         <header className="mb-12">
           <div className="flex items-center gap-4 mb-6">
-            <span className="font-mono text-xs tracking-[0.2em] uppercase text-sky-300">{post.category}</span>
-            <span className="w-1 h-1 rounded-full bg-white/20" />
-            <span className="font-mono text-xs text-white/40 tracking-widest">{post.date}</span>
-            <span className="w-1 h-1 rounded-full bg-white/20" />
-            <span className="font-mono text-xs text-white/40 tracking-widest">{post.readTime}</span>
+            <span className="font-mono text-xs tracking-[0.2em] uppercase text-blue-600 dark:text-sky-300">{post.category}</span>
+            <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-white/20" />
+            <span className="font-mono text-xs text-gray-400 dark:text-white/40 tracking-widest">{post.date}</span>
+            <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-white/20" />
+            <span className="font-mono text-xs text-gray-400 dark:text-white/40 tracking-widest">{post.readTime}</span>
           </div>
           
-          <h1 className="font-display text-4xl md:text-6xl font-light italic text-white leading-tight mb-8">
+          <h1 className="font-display text-4xl md:text-6xl font-light italic text-gray-900 dark:text-white leading-tight mb-8">
             {post.title}
           </h1>
 
           {post.image && (
-            <div className="aspect-video relative overflow-hidden border border-white/10 mb-12 shadow-2xl">
+            <div className="aspect-video relative overflow-hidden border border-gray-200 dark:border-white/10 mb-12 shadow-2xl">
               <Image src={post.image} alt={post.title} fill className="object-cover" />
             </div>
           )}
@@ -92,14 +81,14 @@ export default async function BlogPost({ params }: { params: Promise<{ id: strin
 
         <div className="prose prose-invert prose-lg max-w-none">
           {post.content.split('\\n\\n').map((paragraph, i) => (
-            <p key={i} className="text-white/80 leading-relaxed mb-6 font-light">
+            <p key={i} className="text-gray-700 dark:text-white/80 leading-relaxed mb-6 font-light">
               {paragraph}
             </p>
           ))}
         </div>
         
-        <div className="mt-16 pt-8 border-t border-white/10">
-          <p className="font-mono text-xs tracking-widest uppercase text-white/40 text-center">
+        <div className="mt-16 pt-8 border-t border-gray-200 dark:border-white/10">
+          <p className="font-mono text-xs tracking-widest uppercase text-gray-400 dark:text-white/40 text-center">
             Thanks for reading
           </p>
         </div>

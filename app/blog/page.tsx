@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 const posts = [
@@ -60,7 +61,7 @@ export default function BlogPage() {
               <div className="grid md:grid-cols-[280px_1fr]">
                 <div className="aspect-video md:aspect-auto relative overflow-hidden flex items-center justify-center border-b md:border-b-0 md:border-r border-white/10 bg-white/5">
                   {p.image ? (
-                    <img src={p.image} alt={p.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
+                    <Image src={p.image} alt={p.title} fill className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
                   ) : (
                     <div className="p-8 text-center">
                       <span className="font-mono text-xs tracking-[0.2em] uppercase text-white/60">{p.category}</span>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 
 const posts = [
@@ -34,8 +35,9 @@ const posts = [
   },
 ];
 
-export default function BlogPost({ params }: { params: { id: string } }) {
-  const post = posts.find((p) => p.id.toString() === params.id);
+export default async function BlogPost({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const post = posts.find((p) => p.id.toString() === id);
 
   if (!post) {
     return (
@@ -83,7 +85,7 @@ export default function BlogPost({ params }: { params: { id: string } }) {
 
           {post.image && (
             <div className="aspect-video relative overflow-hidden border border-white/10 mb-12 shadow-2xl">
-              <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
+              <Image src={post.image} alt={post.title} fill className="object-cover" />
             </div>
           )}
         </header>

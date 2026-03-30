@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Mail, Phone } from "lucide-react";
 
 const Instagram = ({ size = 24 }: { size?: number }) => (
@@ -116,10 +117,11 @@ export default function HomePage() {
                     border: "1px solid rgba(107,174,214,0.2)",
                   }}
                 >
-                  <img
+                  <Image
                     src="/basta.jpg"
                     alt="Stelamae Sumalinog"
-                    className="w-full h-full object-cover rounded-full"
+                    fill
+                    className="object-cover rounded-full"
                   />
                   <span
                     className="font-display text-5xl italic absolute"
@@ -165,7 +167,7 @@ export default function HomePage() {
                   }}
                 >
                   {p.image ? (
-                    <img src={p.image} alt={p.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
+                    <Image src={p.image} alt={p.title} fill className="object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center">
                       <span

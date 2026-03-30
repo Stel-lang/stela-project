@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function AboutPage() {
   const info = [
     { label: "Full Name", value: "Stelamae Sumalinog" },
@@ -38,11 +40,12 @@ export default function AboutPage() {
 
         <section className="grid md:grid-cols-2 gap-12 items-start mb-20">
           <div className="relative">
-            <div className="aspect-[4/5] bg-white/10 border border-white/10 overflow-hidden">
-              <img
+            <div className="aspect-[4/5] bg-white/10 border border-white/10 overflow-hidden relative">
+              <Image
                 src="/stelay.jpg"
                 alt="Stelamae Sumalinog"
-                className="w-full h-full object-cover hover:grayscale-0 transition-all duration-700"
+                fill
+                className="object-cover hover:grayscale-0 transition-all duration-700"
               />
             </div>
             <div className="absolute -bottom-3 -right-3 w-full h-full border border-white/20 -z-10" />

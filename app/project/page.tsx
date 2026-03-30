@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const projects = [
   {
     id: 1,
@@ -73,7 +75,7 @@ export default function ProjectsPage() {
               <div className="grid md:grid-cols-2">
                 <div className={"aspect-video relative overflow-hidden flex items-center justify-center border-r border-white/10 " + p.bgClass}>
                   {p.image ? (
-                    <img src={p.image} alt={p.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
+                    <Image src={p.image} alt={p.title} fill className="object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
                   ) : (
                     <span className="font-display text-7xl text-white/10 italic">{p.id}</span>
                   )}
